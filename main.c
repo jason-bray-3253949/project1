@@ -9,8 +9,6 @@ int main()
 	
 	printf("Enter message: \n");      
 	scanf("%[^\n]", message);                                  //reads the message until a new line
-	printf("Enter key between 0 and 26: \n");
-	scanf("%d", &key);
 	
 	printf("Please choose from the following options:\n");
 	printf("1. Encrypt with a rotation cipher\n");
@@ -58,8 +56,8 @@ int main()
 	       
      //rotation ciphor without key
 	    case 4:	
-	    noKey = 1;
-	    while(noKey <26){
+	    noKey = 0;
+	    while(noKey <=26){
 	       for(i = 0; i < 1000 && message[i] != '\0' ; i++) {       //loops until the message has been read then exits
 	            if(message[i] >= 'A' && message[i] <= 'Z'){        //this selects letters between A-Z
 	                  message[i] = message[i] + noKey;             //tests the generated key
@@ -69,7 +67,7 @@ int main()
             }
                             
                  
-                 printf("The encrypted message may be: %s\n", message);
+                 printf("\n\nThe encrypted message may be:\n%s", message);
                  noKey++;
         }
 
