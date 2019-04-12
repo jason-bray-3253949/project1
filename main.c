@@ -4,7 +4,7 @@
 int main()
 {
 	char message[1000];                                        //array to store message 
-	int x, i, key, noKey;                                             //x for program option menu, key for key, i for array
+	int x, i, key = 1;                                         //x for program option menu, key for key, i for array
 	
 	
 	printf("Enter message: \n");      
@@ -28,7 +28,7 @@ int main()
 	           if(message[i] >= 'A' && message[i] <= 'Z'){      //this selects letters between A-Z
 	               message[i] = message[i] + key;               //performs the encryption with key
 	               if(message[i] > 'Z'){                        //if a letter moves outside of the data range A-Z
-	                    message[i] = message[i] - 'Z' + 'A' -1; //returns that letter back to the beginning of A-Z
+	                    message[i] = message[i] - 'Z' + 'A' - 1; //returns that letter back to the beginning of A-Z
                    }    
                 }
 	       printf("The encrypted message is: %s\n", message);
@@ -47,33 +47,30 @@ int main()
 	       for(i = 0; i < 1000 && message[i] != '\0' ; i++)     //loops until message has been read then exits
 	           if(message[i] >= 'A' && message[i] <= 'Z'){      //this selects letters between A-Z
 	               message[i] = message[i] - key;               //performs the decryption with key
-	               if(message[i] < 'A'){                        //if a letters moves out of the A-Z range
-	               message[i] = message[i] - 'A' + 'Z' +1;      //returns letter back to the end of A-Z
-	               }
+	                   if(message[i] < 'A'){                        //if a letters moves out of the A-Z range
+	                       message[i] = message[i] - 'A' + 'Z' + 1;      //returns letter back to the end of A-Z
+	                   }
                }
 	       printf("The decrypted message is: %s\n", message);
 	       break; 
 	       
      //rotation ciphor without key
 	    case 4:	
-	    noKey = 0;
-	    while(noKey <=26){
+	    while(key < 26){
 	       for(i = 0; i < 1000 && message[i] != '\0' ; i++) {       //loops until the message has been read then exits
-	            if(message[i] >= 'A' && message[i] <= 'Z'){        //this selects letters between A-Z
-	                  message[i] = message[i] + noKey;             //tests the generated key
-    	               if(message[i] > 'Z')                       //if a letter moves outside of the data range A-Z
-	                       message[i] = message[i] - 'Z' + 'A' -1; //returns that letter back to the beginning of A-Z
-                }        
-            }
-                            
+	            if(message[i] >= 'A' && message[i] <= 'Z'){         //this selects letters between A-Z
+	               message[i] = message[i] - key;                //tests the generated key
+    	           if(message[i] < 'A'){                         //if a letter moves outside of the data range A-Z
+	                   message[i] = message[i] - 'A' + 'Z' + 1;  //returns that letter back to the beginning of A-Z
+                   }        
+                }
+            }            
+
                  
                  printf("\n\nThe encrypted message may be:\n%s", message);
-                 noKey++;
+                 key++;
         }
-
-
-	       
-	    break;
+        break;
 	       
 	     
 	     
