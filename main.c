@@ -59,7 +59,7 @@ int main()
 	    while(key < 26){
 	       for(i = 0; i < 1000 && message[i] != '\0' ; i++) {       //loops until the message has been read then exits
 	            if(message[i] >= 'A' && message[i] <= 'Z'){         //this selects letters between A-Z
-	               message[i] = message[i] - ;                //tests the generated key
+	               message[i] = message[i] - 1;                //tests the generated key
     	           if(message[i] < 'A'){                         //if a letter moves outside of the data range A-Z
 	                   message[i] = message[i] - 'A' + 'Z' + 1;  //returns that letter back to the beginning of A-Z
                    }        
