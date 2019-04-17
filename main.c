@@ -17,7 +17,7 @@ int main()
 	printf("4. Decrypt a rotation cipher without key\n");
 	printf("5. Decrypt a substitution cipher\n");
 	printf("6. Decrypt a substitution cipher without key\n");
-	scanf("%d\n", &x);
+	scanf("%d", &x);
 	
 	switch(x){
 	    //Rotation cipher encryption with key
