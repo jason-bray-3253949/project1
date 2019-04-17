@@ -12,9 +12,9 @@ int main()
 	
 	printf("Please choose from the following options:\n");
 	printf("1. Encrypt with a rotation cipher\n");
-	printf("2. Encrypt with substitution cipher\n");
-	printf("3. Decrypt a rotation cipher\n");
-	printf("4. Decrypt a rotation cipher without key\n");
+	printf("2. Decrypt a rotation cipher\n");
+	printf("3. Decrypt a rotation cipher without key\n");
+	printf("4. Encrypt with substitution cipher\n");
 	printf("5. Decrypt a substitution cipher\n");
 	printf("6. Decrypt a substitution cipher without key\n");
 	scanf("%d", &x);
@@ -34,14 +34,10 @@ int main()
 	       printf("The encrypted message is: %s\n", message);
 	       break;
 
-        case 2:
-               printf("Enter key between 0 and 26: \n");
-	           scanf("%d", &key);
-        break;
-
+  
 
         //Rotation ciphor decryption with key	     
-	    case 3:
+	    case 2:
 	       printf("Enter key between 0 and 26: \n");
 	       scanf("%d", &key);
 	       for(i = 0; i < 1000 && message[i] != '\0' ; i++)     //loops until message has been read then exits
@@ -54,8 +50,8 @@ int main()
 	       printf("The decrypted message is: %s\n", message);
 	       break; 
 	       
-     //rotation ciphor without key
-	    case 4:	
+     //rotation ciphor without key: BRUTE FORCE
+	    case 3:	
 	    while(key < 26){
 	       for(i = 0; i < 1000 && message[i] != '\0' ; i++) {       //loops until the message has been read then exits
 	            if(message[i] >= 'A' && message[i] <= 'Z'){         //this selects letters between A-Z
@@ -67,12 +63,15 @@ int main()
             }            
 
                  
-                 printf("\n\nThe encrypted message may be:\n%s", message);
+                 printf("\n\nThe encrypted message may be:\n%s\n", message);
                  key++;
         }
         break;
 	       
-	     
+	    case 4:
+        printf("Enter key between 0 and 26: \n");
+	    scanf("%d", &key);
+        break;
 	     
 	     
         case 5:
@@ -82,6 +81,7 @@ int main()
         break;
         
         case 6:
+        printf("LOL jk\n.");
         break;
         
 	    default:
