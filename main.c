@@ -12,8 +12,7 @@ void brute(char *message);
 void subencrypt(char *message, char *akey); 
  
 /* SUBSTITUTION CIPHER DECRYPTION FUNCTION */
-//MUST USE KEY AND REVERSE IT: A = Z B = Y FOR THE KEY
-//?2 key arrays
+void subdecrypt(char *message, char *akey);
  
 int main()
 {
@@ -55,9 +54,9 @@ int main()
 	    break;
 	     
         case 5: //Substitution cipher decryption
-        printf("Enter key between 0 and 26: \n");
+        printf("Please enter the key alphabet without any spaces: \n");
         scanf("%s", akey);
-        
+        subdecrypt(message, akey);
         break;
         
         case 6: //Substitution cipher decryption without key
@@ -154,4 +153,91 @@ void subencrypt(char *message, char *akey){
         }
     }
     printf("The encypted message is:\n%s", message);
+}
+
+
+/*SUBSTITUTION CIPHER DECRYPTION FUNCTION */
+void subdecrypt(char *message, char *akey){
+    int i;
+    for(i = 0; i < 1000 && message[i] != '\0' ; i++){      
+        if(message[i] == akey[0]){
+            message[i] = 'A';
+        }
+        else if(message[i] == akey[1]){
+            message[i] = 'B';
+        }
+        else if(message[i] == akey[2]){
+            message[i] = 'C';
+        }
+        else if(message[i] == akey[3]){
+            message[i] = 'D';
+        }
+        else if(message[i] == akey[4]){
+            message[i] = 'E';
+        }
+        else if(message[i] == akey[5]){
+            message[i] = 'F';
+        }
+        else if(message[i] == akey[6]){
+            message[i] = 'G';
+        }
+        else if(message[i] == akey[7]){
+            message[i] = 'H';
+        }
+        else if(message[i] == akey[8]){
+            message[i] = 'I';
+        }
+        else if(message[i] == akey[9]){
+            message[i] = 'J';
+        }
+        else if(message[i] == akey[10]){
+            message[i] = 'K';
+        }
+        else if(message[i] == akey[11]){
+            message[i] = 'L';
+        }
+        else if(message[i] == akey[12]){
+            message[i] = 'M';
+        }
+        else if(message[i] == akey[13]){
+            message[i] = 'N';
+        }
+        else if(message[i] == akey[14]){
+            message[i] = 'O';
+        }
+        else if(message[i] == akey[15]){
+            message[i] = 'P';
+        }
+        else if(message[i] == akey[16]){
+            message[i] = 'Q';
+        }
+        else if(message[i] == akey[17]){
+            message[i] = 'R';
+        }
+        else if(message[i] == akey[18]){
+            message[i] = 'S';
+        }
+        else if(message[i] == akey[19]){
+            message[i] = 'T';
+        }
+        else if(message[i] == akey[20]){
+            message[i] = 'U';
+        }
+        else if(message[i] == akey[21]){
+            message[i] = 'V';
+        }
+        else if(message[i] == akey[22]){
+            message[i] = 'W';
+        }
+        else if(message[i] == akey[23]){
+            message[i] = 'X';
+        }
+        else if(message[i] == akey[24]){
+            message[i] = 'Y';
+        }
+        else if(message[i] == akey[25]){
+            message[i] = 'Z';
+        }
+    }
+    printf("The decrypted message is:\n%s", message);
 }
