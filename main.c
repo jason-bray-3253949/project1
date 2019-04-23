@@ -1,26 +1,31 @@
 #include<stdio.h>
+/* LOWER CASE TO UPPER CASE FUNCTION */
+void lowToUp(char *message);
+
 /* ROTATION CIPHER ENCRYPTION FUNCTION */
-void rotencrypt(char *message, int key);
+void rotEncrypt(char *message, int key);
 
 /* ROTATION CIPHER DECRYPTION FUNCTION */
-void rotdecrypt(char *message, int key);
+void rotDecrypt(char *message, int key);
 
 /*ROTATION CIPHER BRUTE FORCE ATTACK FUNCTION */
 void brute(char *message);
 
 /* SUBSTITUTION CIPHER ENCRYPTION FUNCTION */ 
-void subencrypt(char *message, char *akey); 
+void subEncrypt(char *message, char *akey); 
  
 /* SUBSTITUTION CIPHER DECRYPTION FUNCTION */
-void subdecrypt(char *message, char *akey);
+void subDecrypt(char *message, char *akey);
  
 int main()
 {
 	char message[1000], akey[26];                                        //array to store message 
-	int x, key;                     //x for program option menu, key for key, i for array
+	int x, key = 1;                     //x for program option menu, key for key, i for array
 	
 	printf("Enter a message: \n");      
 	scanf("%[^\n]", message); 
+	lowToUp(message);
+	
 	printf("What would you like to do with the message?\n");
 	printf("1  Encrypt with a rotation cipher\n");
 	printf("2  Decrypt a rotation cipher\n");
@@ -31,98 +36,121 @@ int main()
 	scanf("%d", &x); 
 	
 	switch(x){
-	    case 1: //Rotation cipher encryption with key 
+	  case 1: //Rotation cipher encryption with key 
 	       printf("Enter key between 0 and 26: \n");
 	       scanf("%d", &key);
-	       rotencrypt(message, key);
-	       break;
-              
-	    case 2://Rotation cipher decryption with key	
+	       rotEncrypt(message, key);
+	       printf("The encrypted message is: \n%s\n", message);
+	       break;              
+	   case 2://Rotation cipher decryption with key	
 	       printf("Enter key between 0 and 26: \n");
 	       scanf("%d", &key);
-	       rotdecrypt(message, key);
-	       break; 
-	         
-	    case 3: //rotation cipher without key: BRUTE FORCE
-	    brute(message);
-        break;
-	    	       
-	    case 4: //Substitution cipher encryption
-        printf("Please enter the key alphabet without any spaces: \n");
-	    scanf("%s", akey);
-	    subencrypt(message, akey);
-	    break;
-	     
-        case 5: //Substitution cipher decryption
-        printf("Please enter the key alphabet without any spaces: \n");
-        scanf("%s", akey);
-        subdecrypt(message, akey);
-        break;
-        
-        case 6: //Substitution cipher decryption without key
-        printf("LOL jk\n.");
-        break;
-
-        default:
-	    printf("\nError in task selection\nPlease choose a number between 1 and 6 for task selection");
+	       rotDecrypt(message, key);
+	       printf("The decrypted message is: \n%s\n", message);
+	       break; 	         
+	   case 3: //rotation cipher without key: BRUTE FORCE
+	       while(key < 26)
+	       {
+	          brute(message);
+	          printf("\nThe encrypted message may be (Key = %d):\n%s\n", key, message);
+	          key++;
+	       }
+              break;	    	       
+	   case 4: //Substitution cipher encryption
+	       printf("Please enter the key alphabet without any spaces: \n");
+	       scanf("%s", akey);
+	       subEncrypt(message, akey);
+	       printf("The encypted message is:\n%s", message);
+	       break;	     
+       case 5: //Substitution cipher decryption
+           printf("Please enter the key alphabet without any spaces: \n");
+           scanf("%s", akey);
+           subDecrypt(message, akey);
+           printf("The decrypted message is:\n%s", message);
+           break;        
+       case 6: //Substitution cipher decryption without key
+           printf("LOL jk\n.");
+           break;
+       default:
+	       printf("\nError in task selection\nPlease choose a number between 1 and 6 for task selection");
 	}
 	return 0;
 }
 
+/* LOWER CASE TO UPPER CASE FUNCTION */
+void lowToUp(char *message)
+{
+    int i;
+    for(i = 0; i < 1000 && message[i] != '\0' ; i++)
+    {    
+	   if(message[i] >= 'a' && message[i] <= 'z')
+	   {     
+	       message[i] = message[i] - 32;
+       }
+    }  
+}
 
 /* ROTATION CIPHER ENCRYPTION FUNCTION */
-void rotencrypt(char *message, int key){
+void rotEncrypt(char *message, int key)
+{
     int i;
-    for(i = 0; i < 1000 && message[i] != '\0' ; i++){     //loops until the message has been read then exits
-	   if(message[i] >= 'A' && message[i] <= 'Z'){      //this selects letters between A-Z
+    for(i = 0; i < 1000 && message[i] != '\0' ; i++)
+    {    
+	   if(message[i] >= 'A' && message[i] <= 'Z')
+	   {      
 	       message[i] = message[i] + key;               //performs the encryption with key
-	       if(message[i] > 'Z'){                        //if a letter moves outside of the data range A-Z
-	           message[i] = message[i] - 'Z' + 'A' - 1; //returns that letter back to the beginning of A-Z
+	       if(message[i] > 'Z')
+	       {                        //if a letter moves outside of the data range A-Z
+	           message[i] = message[i] - 26; //returns that letter back to the beginning of A-Z
            }    
-        }
+       }
     }
-    printf("The encrypted message is: %s\n", message);
 }
 
 
 /* ROTATION CIPHER DECRYPTION FUNCTION */
-void rotdecrypt(char *message, int key){
-    int i;
-    for(i = 0; i < 1000 && message[i] != '\0' ; i++){     //loops until message has been read then exits
-	   if(message[i] >= 'A' && message[i] <= 'Z'){      //this selects letters between A-Z
+void rotDecrypt(char *message, int key)
+{
+    int i, count;
+    for(i = 0; i < 1000 && message[i] != '\0' ; i++)
+    {     
+	   if(message[i] >= 'A' && message[i] <= 'Z')
+	   {     
 	       message[i] = message[i] - key;               //performs the decryption with key
-	       if(message[i] < 'A'){                        //if a letters moves out of the A-Z range
-	           message[i] = message[i] - 'A' + 'Z' + 1;      //returns letter back to the end of A-Z
+	       if(message[i] < 'A')
+	       {                     
+	           message[i] = message[i] + 26;      //returns letter back to the end of A-Z
 	       }
-        }
+       }
     }
-    printf("The decrypted message is: %s\n", message);
 }
 
 
 /* ROTATION CIPHER BRUTE FORCE ATTACK FUNCTION */
-void brute(char *message){
-int i, count = 1;
-	    while(count < 26){
-	       for(i = 0; i < 1000 && message[i] != '\0' ; i++) {       //loops until the message has been read then exits
-	            if(message[i] >= 'A' && message[i] <= 'Z'){         //this selects letters between A-Z
+void brute(char *message)
+{
+    int i;
+	       for(i = 0; i < 1000 && message[i] != '\0' ; i++)  //loops until the message has been read then exits
+	       {      
+	            if(message[i] >= 'A' && message[i] <= 'Z')
+	            {        
 	               message[i] = message[i] - 1;                //tests the generated key
     	           if(message[i] < 'A'){                         //if a letter moves outside of the data range A-Z
-	                   message[i] = message[i] - 'A' + 'Z' + 1;  //returns that letter back to the beginning of A-Z
+	                   message[i] = message[i] + 26;  //returns that letter back to the beginning of A-Z
                    }        
                 }
-            }                       
-            printf("\n\nThe encrypted message may be:\n%s\n", message);
-            count++;
-        }
-    }
+           }                       
+}
 
 
 /* SUBSTITUTION CIPHER ENCRYPTION FUNCTION */
-void subencrypt(char *message, char *akey){
+void subEncrypt(char *message, char *akey)
+{
     int i;
-    for(i = 0; i < 1000 && message[i] != '\0' ; i++) {      
-        switch(message[i]){
+    for(i = 0; i < 1000 && message[i] != '\0' ; i++) 
+    {      
+        switch(message[i])
+        {
             case 'A': message[i] = akey[0]; break;
             case 'B': message[i] = akey[1]; break;
             case 'C': message[i] = akey[2]; break;
@@ -152,14 +180,15 @@ void subencrypt(char *message, char *akey){
             default: break;
         }
     }
-    printf("The encypted message is:\n%s", message);
 }
 
 
 /*SUBSTITUTION CIPHER DECRYPTION FUNCTION */
-void subdecrypt(char *message, char *akey){
+void subDecrypt(char *message, char *akey)
+{
     int i;
-    for(i = 0; i < 1000 && message[i] != '\0' ; i++){      
+    for(i = 0; i < 1000 && message[i] != '\0' ; i++)
+    {      
         if(message[i] == akey[0]){
             message[i] = 'A';
         }
@@ -239,5 +268,4 @@ void subdecrypt(char *message, char *akey){
             message[i] = 'Z';
         }
     }
-    printf("The decrypted message is:\n%s", message);
 }
