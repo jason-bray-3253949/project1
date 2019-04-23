@@ -35,7 +35,8 @@ int main()
 	printf("6  Decrypt a substitution cipher without key\n");
 	scanf("%d", &x); 
 	
-	switch(x){
+	switch(x)
+	{
 	  case 1: //Rotation cipher encryption with key 
 	       printf("Enter key between 0 and 26: \n");
 	       scanf("%d", &key);
