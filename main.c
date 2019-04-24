@@ -41,12 +41,11 @@ int main()
 
 
 	switch(x)
-	{  /* 
-        * switch(x) uses the number entered by the user at the option menu
-        * to select which task to execute.
+	{
+	   /* 
+        * switch(x) uses the number entered by the user at the option menu to select which task to execute.
         * case 1 = option 1, case 2 = option 2...
-        * default = if an option between 1-6 is not selected 
-        * an error message is printed to the console
+        * default = if an option between 1-6 is not selected an error message is printed to the console
         */
 	   
 	   /* Rotation cipher encryption with key */
@@ -117,7 +116,8 @@ void lowToUp(char *message) //definition
 {
     int i; //used as an element variable for the message array in the for loop
     for(i = 0; i < 1000 && message[i] != '\0' ; i++)
-    {   /*
+    {
+        /*
          * The for loop starts at element 0 of the message array (i=0), 
          * increments i to the next element each time the loop runs, until
          * the last element message[999] is read or '\0' is read indicating
@@ -149,7 +149,8 @@ void rotEncrypt(char *message, int key) //definition
 {
     int i; //used as an element variable for the message array in the for loop
     for(i = 0; i < 1000 && message[i] != '\0' ; i++)
-    {   /*
+    {
+        /*
          * The for loop starts at element 0 of the message array (i=0), 
          * increments i to the next element each time the loop runs, until
          * the last element message[999] is read or '\0' is read indicating
@@ -182,7 +183,8 @@ void rotDecrypt(char *message, int key) //definition
 {
     int i; //used as an element variable for the message array in the for loop
     for(i = 0; i < 1000 && message[i] != '\0' ; i++)
-    {   /*
+    {
+        /*
          * The for loop starts at element 0 of the message array (i=0), 
          * increments i to the next element each time the loop runs, until
          * the last element message[999] is read or '\0' is read indicating
@@ -212,7 +214,8 @@ void brute(char *message) //defintion
 {
     int i; //used as an element variable for the message array in the for loop
     for(i = 0; i < 1000 && message[i] != '\0' ; i++)
-	{   /*
+	{
+	    /*
          * The for loop starts at element 0 of the message array (i=0), 
          * increments i to the next element each time the loop runs, until
          * the last element message[999] is read or '\0' is read indicating
@@ -246,7 +249,8 @@ void subEncrypt(char *message, char *akey) //definition
 {
     int i; //used as an element variable for the message array in the for loop
     for(i = 0; i < 1000 && message[i] != '\0' ; i++)
-    {   /*
+    {
+        /*
          * The for loop starts at element 0 of the message array (i=0), 
          * increments i to the next element each time the loop runs, until
          * the last element message[999] is read or '\0' is read indicating
@@ -356,7 +360,8 @@ void subDecrypt(char *message, char *akey) //definition
 {
     int i; //used as an element variable for the message array in the for loop
     for(i = 0; i < 1000 && message[i] != '\0' ; i++) 
-    {   /*
+    {
+        /*
          * The for loop starts at element 0 of the message array (i=0), 
          * increments i to the next element each time the loop runs, until
          * the last element message[999] is read or '\0' is read indicating
