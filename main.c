@@ -83,16 +83,18 @@ int main()
 	   case 4: 
 	       printf("Please enter the substitution alphabet key without any spaces:\n"); //user prompt to enter key
 	       scanf("%s", akey); //reads and stores the alphabet key as an array
+	       lowToUp(akey); //lowToUp function converts lower case letters entered in akey to upper case letters
 	       subEncrypt(message, akey); //substitution encryption function on message using akey array
-	       printf("The encypted message is:\n%s", message); //prints encrypted message to console
+	       printf("The encypted message is:\n%s\n", message); //prints encrypted message to console
 	       break; //exits switch() case to prevent the following cases from running after this case      
 	       
 	   /* Substitution cipher decryption */
        case 5: 
            printf("Please enter the substitution alphabet key without any spaces:\n"); //user prompt to enter key
            scanf("%s", akey); //reads and stores the alphabet key as an array
+           lowToUp(akey); //lowToUp function converts lower case letters entered in akey to upper case letters
            subDecrypt(message, akey); //substitution decryption function on message using akey array
-           printf("The decrypted message is:\n%s", message); //prints decrypted message to console
+           printf("The decrypted message is:\n%s\n", message); //prints decrypted message to console
            break; //exits switch() case to prevent the following cases from running after this case    
            
        /* Substitution cipher decryption without key */   
