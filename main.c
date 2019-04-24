@@ -1,7 +1,23 @@
+/*
+ * This program can:
+ * encrypt and decrypt a rotation cipher given the key
+ * decrypt a rotation cipher without a key via a brute force attack
+ * encrypt and decrypt a substitution cipher given the key
+ * 
+ * This program cannot decrypt a substitution cipher without the key.
+ * 
+ * When the program is run there are prompts informing the user what to do.
+ * The message cannot have a line break due to the use of scanf("%[^\n]").
+ * Lower case can be used for all input, the program converts it to upper case.
+ * The rotation cipher key must be a positive integer between 0 and 26.
+ * The substitution cipher key must contain ASCII characters between A-Z or a-z.
+ * The substitution cipher key cannot have any white space as scanf("%s") is used.
+ */
+
 #include<stdio.h>
 
 /* LOWER CASE TO UPPER CASE FUNCTION PROTOTYPE */
-void lowToUp(char *message);
+void lowToUp(char *string);
 
 /* ROTATION CIPHER ENCRYPTION FUNCTION PROTOTYPE */
 void rotEncrypt(char *message, int key);
@@ -17,6 +33,7 @@ void subEncrypt(char *message, char *akey);
  
 /* SUBSTITUTION CIPHER DECRYPTION FUNCTION PROTOTYPE */
 void subDecrypt(char *message, char *akey);
+
  
 int main()
 {
@@ -111,23 +128,25 @@ int main()
 }
 
 /* LOWER CASE TO UPPER CASE FUNCTION DEFINITION
- * Converts all lower case letters in the message entered by the user  
- * into upper case letters
+ * This function requires an array that contains a string and converts all the 
+ * ASCII lower case letters to ASCII upper case letters in that string and
+ * overwrites them. 
+ * This function is limited to strings under 1000 characters.
  */
-void lowToUp(char *message) //definition
+void lowToUp(char *string) //definition
 {
-    int i; //used as an element variable for the message array in the for loop
-    for(i = 0; i < 1000 && message[i] != '\0' ; i++)
+    int i; //used as an element variable for the string array in the for loop
+    for(i = 0; i < 1000 && string[i] != '\0' ; i++)
     {
         /*
-         * The for loop starts at element 0 of the message array (i=0), 
+         * The for loop starts at element 0 of the string array (i=0), 
          * increments i to the next element each time the loop runs, until
-         * the last element message[999] is read or '\0' is read indicating
+         * the last element string[999] is read or '\0' is read indicating
          * the end of the string has been reached.
          */   
-        if(message[i] >= 'a' && message[i] <= 'z') //if the message is between ASCII characters a-z
+        if(string[i] >= 'a' && string[i] <= 'z') //if the message is between ASCII characters a-z
 	    {
-	        message[i] = message[i] - 32; 
+	        string[i] = string[i] - 32; 
             /* lower case letters are 32 ASCII characters higher than upper case
              * by subtraction 32 the letters between a-z are now between A-Z.
              * b becomes B, x becomes X and so on
@@ -145,7 +164,8 @@ void lowToUp(char *message) //definition
  * For example,
  * for key = 1: A becomes B, B becomes C, ..., Y becomes Z, Z becomes A
  * for key = 2: A becomes C, B becomes D, ..., Y becomes A, Z becomes B
- * and so on
+ * and so on.
+ * This function is limited to strings under 1000 characters.
  */
 void rotEncrypt(char *message, int key) //definition
 {
@@ -178,8 +198,8 @@ void rotEncrypt(char *message, int key) //definition
  * For example,
  * for key = 1: A becomes Z, B becomes A, ..., Y becomes X, Z becomes Y
  * for key = 2: A becomes Y, B becomes Z, ..., Y becomes W, Z becomes X
- * and so on
-
+ * and so on.
+ * This function is limited to 1000 characters long.
  */
 void rotDecrypt(char *message, int key) //definition
 {
@@ -208,6 +228,7 @@ void rotDecrypt(char *message, int key) //definition
  * The ASCII character stored in the message element shifts down by 1. 
  * If the new ASCII character is less than ASCII Z, 26 is added to return the 
  * ASCII character back to the end of the A-Z range.
+ * This function is limited to strings under 1000 characters.
  *
  * NB: This function needs to be looped to test multiple keys as it subtracts
  * 1 each time it runs.
@@ -246,6 +267,7 @@ void brute(char *message) //defintion
  * if the 2nd key letter is A, each B in the message would become A.
  * ...
  * if the 26th key letter is M, each Z in the message becomes M.
+ * This function is limited to strings under 1000 characters.
  */
 void subEncrypt(char *message, char *akey) //definition
 {
@@ -357,6 +379,7 @@ void subEncrypt(char *message, char *akey) //definition
  * if the 2nd key letter is X, each X in the message becomes B. 
  * ...
  * if the 26th key letter is Q, each Q in the message becomes Z.
+ * This function is limited to strings under 1000 characters.
  */
 void subDecrypt(char *message, char *akey) //definition
 {
