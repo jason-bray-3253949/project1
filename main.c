@@ -102,7 +102,7 @@ int main()
        
        /*notifies user that an incorrect option was selected and gives further instruction */
        default:
-	       printf("\nError in task selection\n" //prints error to console
+	       printf("\nError in task selection\n"); //prints error to console
 	       printf("Please choose a number between 1 and 6 for task selection\n"); //prints instruction to console
 	}
 	return 0;
