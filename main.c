@@ -42,7 +42,7 @@ int main()
 
 	switch(x)
 	{
-	   /* 
+       /* 
         * switch(x) uses the number entered by the user at the option menu to select which task to execute.
         * case 1 = option 1, case 2 = option 2...
         * default = if an option between 1-6 is not selected an error message is printed to the console
@@ -128,7 +128,7 @@ void lowToUp(char *message) //definition
 	        message[i] = message[i] - 32; 
 	        /* lower case letters are 32 ASCII characters higher than upper case
 	         * by subtraction 32 the letters between a-z are now between A-Z.
-	         * b becomes B, x becomes X and so on
+             * b becomes B, x becomes X and so on
              */
        }
     }  
