@@ -70,7 +70,7 @@ int main()
 	    * The function is looped until each key between 1-25 is tested.
 	    * key = 1 initially, loop exits once key = 25 is tested.
         * The output from each test is printed to the console with the key used.
-	    */
+        */
 	       while(key < 26) //loops while key is less than 26
 	       {
 	          brute(message); //brute force function used on message
@@ -126,8 +126,8 @@ void lowToUp(char *message) //definition
         if(message[i] >= 'a' && message[i] <= 'z') //if the message is between ASCII characters a-z
 	    {
 	        message[i] = message[i] - 32; 
-	        /* lower case letters are 32 ASCII characters higher than upper case
-	         * by subtraction 32 the letters between a-z are now between A-Z.
+            /* lower case letters are 32 ASCII characters higher than upper case
+             * by subtraction 32 the letters between a-z are now between A-Z.
              * b becomes B, x becomes X and so on
              */
        }
@@ -215,7 +215,7 @@ void brute(char *message) //defintion
     int i; //used as an element variable for the message array in the for loop
     for(i = 0; i < 1000 && message[i] != '\0' ; i++)
 	{
-	    /*
+        /*
          * The for loop starts at element 0 of the message array (i=0), 
          * increments i to the next element each time the loop runs, until
          * the last element message[999] is read or '\0' is read indicating
