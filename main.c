@@ -1,4 +1,5 @@
 /*
+ * 
  * This program can:
  * encrypt and decrypt a rotation cipher given the key
  * decrypt a rotation cipher without a key via a brute force attack
@@ -92,7 +93,7 @@ int main()
 	       {
 	          brute(message); //brute force function used on message
 	          printf("\nThe encrypted message may be (Key = %d):\n%s\n", key, message); //prints the message and key used for the test to console
-	          key++; //increments key variable for the next test
+              key++; //increments key variable for the next test
 	       }
               break; //exits switch() case to prevent the following cases from running after this case   
               
